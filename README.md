@@ -21,6 +21,8 @@
 * WHEN I refresh the page
 * THEN the saved events persist
 
+https://sunrisedad.github.io/WorkDayScheduler/
+
 
 
 ![workdaypic](https://user-images.githubusercontent.com/84816623/130691145-2d827064-bd46-4ee0-a343-f982d00c2f90.PNG)
