@@ -62,6 +62,6 @@ function usePlanner() {
 
 usePlanner();
 
-// CURRENT TIME
+// CURRENT DAY
 
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
