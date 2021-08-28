@@ -32,11 +32,9 @@ function pastPresentFuture() {
             $(this).addClass("future")
         }
 
-
         else if (thisHour === hour) {
             $(this).addClass("present");
         }
-
 
         else {
             $(this).addClass("past");
@@ -46,7 +44,7 @@ function pastPresentFuture() {
 
 pastPresentFuture();
 
-// ENTER/SAVE/RETRIEVE ENTERED TEXT FROM LOCAL STORAGE
+// ENTER/RETRIEVE ENTERED TEXT FROM LOCAL STORAGE
 
 function usePlanner() {
 
