@@ -1,53 +1,67 @@
-$(document).ready(function() {
+// VARIABLES
 
-    // Adding date to header
-var currentTime = moment().format("dddd MMMM Do, YYYY");
-$("#currentDay")
-.text("Today is " + currentTime);
+var hour8AM = $("#8");
+var hour9AM = $("#9");
+var hour10AM = $("#10");
+var hour11AM = $("#11");
+var hour12PM = $("#12");
+var hour1PM = $("#13");
+var hour2PM = $("#14");
+var hour3PM = $("#15");
+var hour4PM = $("#16");
+var time = moment();
+var saveBtn = $(".saveBtn");
 
-// save button clicks and saving to local storage
-$(".saveBtn").on("click", function() {
-    //get values of text entry and time it is in
-    var taskText = $(this).siblings(".event-entry").val();
-    var taskTime = $(this).parent().attr("id");
-    //save items to local storage
-    localStorage.setItem(taskTime, taskText);
+// SAVE EVENT TO LOCAL STORAGE
+
+saveBtn.on("click", function () {
+    var time = $(this).parent().attr("id");
+    var schedule = $(this).siblings(".schedule").val();
+
+    localStorage.setItem(time, schedule);
 });
-// loop through each time slot to compare 
-function compareTimes() {
-    //compare current hour to hour of task
-var updatedHour = moment().hours();
-    $(".timeblock").each(function() {
-        var rowTime = $(this).attr("id");
-        var rowNum = parseInt(rowTime);
-        if(rowNum < updatedHour) {
-            $(this).addClass("pastHour");
+
+// COLOR CODE EVENTS BASED ON PAST/PRESENT/FUTURE
+
+function pastPresentFuture() {
+    hour = time.hours();
+    $(".time-block").each(function () {
+        var thisHour = parseInt($(this).attr("id"));
+
+        if (thisHour > hour) {
+            $(this).addClass("future")
         }
-        else if (rowNum === updatedHour) {
-            $(this).removeClass("pastHour")
-            .addClass("currentHour");
+
+
+        else if (thisHour === hour) {
+            $(this).addClass("present");
         }
-        else if (rowNum > updatedHour) {
-            $(this).removeClass("pastHour")
-            .removeClass("currentHour")
-            .addClass("futureHour");
+
+
+        else {
+            $(this).addClass("past");
+        }
+    })
+}
+
+pastPresentFuture();
+
+// ENTER/SAVE/RETRIEVE ENTERED TEXT FROM LOCAL STORAGE
+
+function usePlanner() {
+
+    $(".time-block").each(function () {
+        var id = $(this).attr("id");
+        var schedule = localStorage.getItem(id);
+
+        if (schedule !== null) {
+            $(this).children(".schedule").val(schedule);
         }
     });
 }
-compareTimes();
 
-//set interval to check times every 30 min
-var timeCheck = setInterval(compareTimes, (1000 * 60) * 30);
+usePlanner();
 
-//loading local storage items
-$("#9 .event-entry").val(localStorage.getItem("9"));
-$("#10 .event-entry").val(localStorage.getItem("10"));
-$("#11 .event-entry").val(localStorage.getItem("11"));
-$("#12 .event-entry").val(localStorage.getItem("12"));
-$("#13 .event-entry").val(localStorage.getItem("13"));
-$("#14 .event-entry").val(localStorage.getItem("14"));
-$("#15 .event-entry").val(localStorage.getItem("15"));
-$("#16 .event-entry").val(localStorage.getItem("16"));
-$("#17 .event-entry").val(localStorage.getItem("17"));
+// CURRENT TIME
 
-});
+$("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));

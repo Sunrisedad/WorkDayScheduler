@@ -1,6 +1,6 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -18,7 +18,7 @@ textarea{
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 8px solid black;
 }
 
 .description{
@@ -39,7 +39,8 @@ textarea{
 .hour {
   background-color: #ffffff;
   color: #000000;
-  border-top: 1px dashed #000000;
+  border-top: 2px dashed #000000;
+  font-size: large;
 }
 
 .past {
@@ -58,10 +59,10 @@ textarea{
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border-left: 2px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background-color: #3e8febd2;
   color: white;
 }
 
@@ -70,13 +71,13 @@ textarea{
   transition: all .3s ease-in-out;
 }
 #hour {
-  border-bottom: 1px black dashed;
+  border-bottom: 2px black dashed;
 }
 .pastHour textarea {
   background-color: rgba(180, 178, 178, 0.6);
 }
 .currentHour textarea {
-  background-color: rgba(250, 33, 62, 0.904);
+  background-color: rgba(245, 48, 90, 0.726);
 }
 .futureHour textarea {
   background-color: rgba(79, 243, 115, 0.863)
